@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <style>
+      .bg { fill: #f7f4ee; }
+      .box { fill: #fffdf8; stroke: #2f2f2f; stroke-width: 2; rx: 16; ry: 16; }
+      .title { font: 700 22px sans-serif; fill: #1f1f1f; }
+      .iface { font: 600 16px sans-serif; fill: #4b4b4b; font-style: italic; }
+      .text { font: 14px sans-serif; fill: #222; }
+      .small { font: 13px sans-serif; fill: #222; }
+      .label { font: 600 14px sans-serif; fill: #1f1f1f; }
+      .arrow { stroke: #2f2f2f; stroke-width: 2.5; fill: none; marker-end: url(#arrowHead); }
+      .darrow { stroke: #2f2f2f; stroke-width: 2.5; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrowHead); }
+      .note { font: 600 28px sans-serif; fill: #1f1f1f; }
+      .caption { font: 14px sans-serif; fill: #444; }
+    </style>
+    <marker id="arrowHead" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f2f2f" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="980"/>
+  <text class="note" x="60" y="52">Arcade Class Diagram</text>
+  <text class="caption" x="60" y="78">Core owns the active IGame and IRenderer. Menu is shown above Core, with Item and DLLoader in the free spaces.</text>
+  <text class="caption" x="60" y="98">IGame is the game plugin interface. IRenderer is the graphics plugin interface.</text>
+
+  <!-- Top row -->
+  <rect class="box" x="90" y="110" width="290" height="170"/>
+  <text class="title" x="235" y="145" text-anchor="middle">Item</text>
+  <text class="text" x="115" y="180">position / size / rotation</text>
+  <text class="text" x="115" y="204">texturePath / text</text>
+  <text class="text" x="115" y="228">drawOrder / isHovered</text>
+  <text class="text" x="115" y="252">buttonAction callback</text>
+
+  <rect class="box" x="540" y="95" width="520" height="200"/>
+  <text class="title" x="800" y="132" text-anchor="middle">Menu</text>
+  <text class="text" x="565" y="168">+ update(Event)</text>
+  <text class="text" x="565" y="192">+ handleKey(Event)</text>
+  <text class="text" x="565" y="216">+ createMenuItems()</text>
+  <text class="text" x="565" y="240">+ switchGame(direction)</text>
+  <text class="text" x="565" y="264">+ switchRenderer(direction)</text>
+
+  <rect class="box" x="1220" y="110" width="290" height="170"/>
+  <text class="title" x="1365" y="145" text-anchor="middle">DLLoader&lt;T&gt;</text>
+  <text class="text" x="1245" y="180">+ DLLoader(libPath, entryPoint)</text>
+  <text class="text" x="1245" y="204">+ getInstance(items) : T*</text>
+  <text class="text" x="1245" y="228">wraps dlopen / dlsym</text>
+  <text class="text" x="1245" y="252">loads shared libraries</text>
+
+  <!-- Middle row -->
+  <rect class="box" x="90" y="390" width="290" height="190"/>
+  <rect x="120" y="398" width="230" height="30" rx="10" ry="10" fill="#e9e4d8" stroke="#2f2f2f" stroke-width="1.5"/>
+  <text class="title" x="235" y="430" text-anchor="middle">IGame</text>
+  <text class="iface" x="235" y="455" text-anchor="middle">game plugin interface</text>
+  <text class="text" x="115" y="490">+ update(Event)</text>
+  <text class="text" x="115" y="514">+ handleKey(Event)</text>
+  <text class="text" x="115" y="538">+ getScore() : vector&lt;int&gt;</text>
+  <text class="text" x="115" y="562">+ isGameOver() : bool</text>
+
+  <rect class="box" x="505" y="370" width="590" height="230"/>
+  <text class="title" x="800" y="410" text-anchor="middle">Core</text>
+  <text class="text" x="530" y="448">+ Core(defaultRendererPath, rendererPaths, gamePaths)</text>
+  <text class="text" x="530" y="472">+ run()</text>
+  <text class="text" x="530" y="496">+ launchGame(gamePath, rendererPath)</text>
+  <text class="text" x="530" y="520">+ loadRenderer(libPath)</text>
+  <text class="text" x="530" y="544">+ loadGame(libPath)</text>
+  <text class="text" x="850" y="472">+ unloadRenderer()</text>
+  <text class="text" x="850" y="496">+ unloadGame()</text>
+  <text class="text" x="850" y="520">+ retrieveAllUserScores()</text>
+  <text class="text" x="850" y="544">+ writeScoreInFile()</text>
+
+  <rect class="box" x="1220" y="390" width="290" height="190"/>
+  <rect x="1250" y="398" width="230" height="30" rx="10" ry="10" fill="#e9e4d8" stroke="#2f2f2f" stroke-width="1.5"/>
+  <text class="title" x="1365" y="430" text-anchor="middle">IRenderer</text>
+  <text class="iface" x="1365" y="455" text-anchor="middle">graphics plugin interface</text>
+  <text class="text" x="1245" y="490">+ createWindow(w, h, title)</text>
+  <text class="text" x="1245" y="514">+ pollEvent(Event&amp;)</text>
+  <text class="text" x="1245" y="538">+ display(map&lt;string, Item&gt;&amp;)</text>
+
+  <!-- Relationships -->
+  <path class="arrow" d="M 505 485 C 450 485, 410 485, 380 485"/>
+  <text class="label" x="405" y="470">active game API</text>
+  <path class="arrow" d="M 1095 485 C 1150 485, 1180 485, 1220 485"/>
+  <text class="label" x="1120" y="470">active graphics API</text>
+  <path class="arrow" d="M 800 295 C 800 330, 800 350, 800 370"/>
+  <text class="label" x="818" y="342">core loop</text>
+  <path class="arrow" d="M 380 220 C 430 220, 455 300, 505 405"/>
+  <text class="label" x="430" y="190">shared Item flow</text>
+  <path class="arrow" d="M 1220 220 C 1170 220, 1145 300, 1095 405"/>
+  <text class="label" x="1110" y="190">dynamic loading</text>
+  <path class="arrow" d="M 800 370 C 800 325, 800 305, 800 295"/>
+  <text class="label" x="820" y="315">menu sits above core</text>
+</svg>

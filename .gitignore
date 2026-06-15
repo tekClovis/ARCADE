@@ -1,0 +1,6 @@
+arcade
+*.so
+*.o
+*.d
+*.txt
+.vscode
