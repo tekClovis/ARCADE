@@ -6,7 +6,7 @@ A modular retro arcade platform written in **C++20**. The core program loads
 
 | Games | Renderers |
 |-------|-----------|
-| 🟡 Pac-Man · 🐍 Snake · 🏍️ Tron · 💣 Minesweeper *(bonus)* | SFML · SDL2 · ncurses |
+| 🟡 Pac-Man · 🐍 Snake · 🏍️ Tron (bonus) | SFML · SDL2 · ncurses |
 
 The architecture is plugin-based: `./arcade` is just a thin core that opens a
 renderer shared library (passed as an argument) and then loads game libraries
