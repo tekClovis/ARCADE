@@ -1,5 +1,9 @@
 # Arcade
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tekClovis/tekClovis/main/gif/arcade.gif" width="640" alt="Arcade" />
+</p>
+
 A modular retro arcade platform written in **C++20**. The core program loads
 **graphics libraries** and **games** dynamically at runtime as shared objects
 (`.so`), so you can swap the renderer or the game on the fly without restarting.
